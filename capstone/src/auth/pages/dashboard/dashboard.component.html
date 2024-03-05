@@ -1,0 +1,32 @@
+<div class="main_container d-flex flex-column gap_4">
+  <div class="attractions d-flex flex-column align-items-center height_max gap_1" *ngIf="bookings.length > 0">
+    <h1>Tourist Attractions</h1>
+    <div class="d-flex flex-row gap_1 bookings" *ngFor="let book of bookings">
+      <img [src]="sanitizeImageUrl(book.placeImg)" class="image">
+      <div class="d-flex flex-column justify-content-center placeName">
+        <p class="d-flex align-items-center">{{ book.cityName }}</p>
+        <p class="d-flex align-items-center">{{ book.placeName }}</p>
+      </div>
+      <div class="d-flex flex-column justify-content-between">
+        <p class="d-flex flex-row gap_1 align-items-center p_10"><i class="fa fa-star"></i>{{ book.placeRating }}</p>
+        <p class="d-flex justify-content-center hours_text">{{
+          book.openingHour }} - {{ book.closingHour }}</p>
+      </div>
+      <p class="d-flex justify-content-center months align-items-center">{{
+        book.startMonthToVisit }} - {{ book.endMonthToVisit }}</p>
+      <div class="d-flex flex-row justify-content-center timings gap_1 align-items-center">
+        <div class="d-flex flex-row justify-content-center gap_1">
+          <i class="fa fa-phone-square pt_8"></i>
+          <p class="timingsLabel">Contact: </p>
+        </div>
+        <p>{{ book.contact }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="restaurants" *ngIf="restaurants.length > 0">
+    <h1>restaurants</h1>
+  </div>
+  <div class="accomodations" *ngIf="accommodations.length > 0">
+    <h1>accommodations</h1>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="nav_bar poppins_bold d-flex">
+  <div class="d-flex flex-column justify-content-between width_100">
+    <div class="d-flex flex-column gap_2">
+      <div class="d-flex flex-column gap_1">
+        <div class="d-flex flex-row gap_1 align-items-center">
+          <i class="fa fa-user fa-2x"></i>
+          <div class="d-flex flex-column gap_1">
+            <div class="d-flex flex-column width_80">
+              <p class="color_pink">{{ emailID }}</p>
+              <p>{{ userRole }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+          <select class="input_search1" id="translate" (change)="changeLang()">
+            <option value="">Select a Language..</option>
+            <option value="en">English</option>
+            <option value="ru">Hindi</option>
+            <option value="admin">Tamil</option>
+            <option value="admin">Kannada</option>
+            <option value="user">Russian</option>
+          </select>
+        </div>
+      </div>
+      <div class="d-flex flex-column align-items-center justify-content-center gap_2">
+        <button class="btn btn-primary" routerLink="/auth/login" *ngIf="authToken===''">Login</button>
+        <button class="btn btn-primary" routerLink="/auth/register" *ngIf="authToken===''">Register</button>
+      </div>
+      <div class="d-flex flex-column gap_1 p_5">
+        <p class="effect effect-1 options" routerLink="/auth/dashboard">Home</p>
+        <p class="effect effect-1 options" routerLink="/attractions">Tourist Attractions</p>
+        <p class="effect effect-1 options">Restaurants</p>
+        <p class="effect effect-1 options">Accommodations</p>
+      </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center align-items-start">
+      <div class="d-flex flex-column justify-content-between gap_2">
+        <div class="d-flex flex-column justify-content-center align-items-center gap_1">
+          <button class="btn btn-success" *ngIf="authToken!==''"
+            routerLink="/auth/profile">Update Profile</button>
+          <button class="btn btn-danger" *ngIf="authToken!==''"
+            (click)="logoutUser()">Logout</button>
+        </div>
+        <div class="d-flex flex-row">
+          <img src="../../../../assets/images/abstract-icon.png" width="60px" height="60px" />
+          <div class="d-flex flex-column">
+            <h4>Tourist</h4>
+            <h4>Guidance App</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

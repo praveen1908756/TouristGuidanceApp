@@ -1,0 +1,12 @@
+@import "../../../app/shared/shared-styles/shared-styles.scss";
+
+.main_container {
+  height: 100vh;
+}
+
+.cards {
+  box-shadow: 2px 2px 7px #82a07e;
+  background-color: #def2db;
+  border-radius: 5px;
+  padding: 20px;
+}

@@ -1,0 +1,75 @@
+@import "../../../app/shared/shared-styles/shared-styles.scss";
+
+.main_container {
+  background-color: #faedf8;
+  height: 100vh;
+  padding: 20px;
+}
+
+.cards {
+  position: relative;
+  color: rgb(255, 255, 255);
+  background-color: #FFD1DC;
+  width: 50vh;
+  height: 72vh;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}
+
+.images {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.bottom_border_white {
+  border-bottom-style: solid;
+  margin-bottom: 2px;
+}
+
+.description {
+  height: 150px;
+  overflow-y: scroll;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.cards_scroll {
+  overflow-x: scroll;
+}
+
+.set_width {
+  width: 400px;
+}
+
+.flex-wrap{
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+
+.flex-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-success{
+  color: white;
+}
+
+.btn-info{
+  color: white;
+  background-color: rgb(13, 94, 94);
+}
+
+.trash_icon{
+  position: absolute;
+  width: 50px;
+  color: white;
+  left: 360px;
+  top: 10px;
+}
+
+.btn-primary{
+  background-color: #014286;
+}

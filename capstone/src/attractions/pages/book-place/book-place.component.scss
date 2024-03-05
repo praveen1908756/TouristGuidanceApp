@@ -1,0 +1,60 @@
+@import "../../../app/shared/shared-styles/shared-styles.scss";
+
+.main_container {
+  margin: 0 auto;
+  float: none;
+  margin-top: 84px;
+  margin-bottom: 10px;
+  background-color: aliceblue;
+  width: 70%;
+  height: 75%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgb(130, 154, 175);
+}
+
+.image {
+  width: 50%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+.description {
+  height: 250px;
+  overflow-y: scroll;
+  padding-right: 40px;
+  text-align: justify;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.rating {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.timings {
+  color: rgb(0, 92, 0);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.timingsLabel{
+  color: black;
+}
+
+.bookButton{
+  color: white;
+  width: 60%;
+}
+
+.paypalButton{
+  width: 60%;
+  // height: 20px;
+}

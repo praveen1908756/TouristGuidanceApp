@@ -1,0 +1,15 @@
+<form [formGroup]="registerForm" (submit)="registerUser(registerForm)">
+  <div class="d-flex flex-column gap_3 align-items-center justify-content-center auth_form">
+    <select class="input_search" formControlName="userRole">
+      <option value="">Select User Role...</option>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+    <input class="input_search" type="text" formControlName="userName" placeholder="Enter UserName...">
+    <input class="input_search" type="text" formControlName="userEmail" placeholder="Enter Email ID...">
+    <input class="input_search" type="password" formControlName="password" placeholder="Enter Password...">
+    <input class="input_search" type="text" formControlName="contact" placeholder="Enter Contact Details...">
+    <span *ngIf="isMessageVisible" [style.color]="message==='User Already Exists... Try Again!' ? 'red' : 'green'">{{ message }}</span>
+    <button class="btn btn-primary" style="width: 30%;">Register!</button>
+  </div>
+</form>

@@ -1,0 +1,8 @@
+<form [formGroup]="loginForm" (submit)="loginUser(loginForm)">
+  <div class="d-flex flex-column gap_3 align-items-center justify-content-center auth_form">
+    <input class="input_search" type="text" formControlName="userEmail" placeholder="Enter Registered Email ID...">
+    <input class="input_search" type="password" formControlName="password" placeholder="Enter Password...">
+    <span *ngIf="isMessageVisible" [style.color]="message==='Logged In!' ? 'green' : 'red'">{{ message }}</span>
+    <button class="btn btn-primary" style="width: 30%;">Login!</button>
+  </div>
+</form>

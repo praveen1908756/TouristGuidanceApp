@@ -1,0 +1,14 @@
+<form [formGroup]="updateForm" (submit)="updateProfile(updateForm)">
+  <div class="d-flex flex-column gap_3 align-items-center justify-content-center auth_form">
+    <select class="input_search" formControlName="userRole">
+      <option value="">Select User Role...</option>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+    <input class="input_search" type="text" formControlName="userName" placeholder="Set New UserName...">
+    <input class="input_search" type="password" formControlName="password" placeholder="Set New Password...">
+    <input class="input_search" type="text" formControlName="contact" placeholder="Set New Contact Details...">
+    <span *ngIf="isMessageVisible" [style.color]="message==='Profile Updated!' ? 'green' : 'red'">{{ message }}</span>
+    <button class="btn btn-primary" style="width: 30%;">Update Profile</button>
+  </div>
+</form>

@@ -1,0 +1,27 @@
+@import "../cities/cities.component.scss";
+
+.cards {
+  position: relative;
+  color: rgb(255, 255, 255);
+  background-color: #ffd1dc;
+  width: 50vh;
+  height: 75vh;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}
+
+.cards {
+  .hours_text {
+    font-size: 12px;
+  }
+}
+
+.hours_text > p:first-child {
+  margin: 0;
+}
+
+.contact{
+  font-weight: 600;
+  color: rgb(4, 75, 4);
+}

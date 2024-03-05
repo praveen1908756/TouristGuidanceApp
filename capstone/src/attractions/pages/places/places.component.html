@@ -1,0 +1,49 @@
+<div class="main_container">
+  <div class="d-flex flex-row justify-content-between">
+    <p></p>
+    <h1 class="d-flex justify-content-center">Places</h1>
+    <button class="btn btn-success" style="width: 100px; height: 40px;" *ngIf="userRole==='admin'"
+      [routerLink]="['addPlace']">Add Place</button>
+    <p *ngIf="userRole==='user'"></p>
+  </div>
+  <div class="filter_bar p_10 d-flex flex-row gap_4 justify-content-center">
+    <div class="d-flex self-align flex-row justify-content-center">
+      <input class="input_search" type="text" placeholder="Search By Place Name.." #searchByPlaceName
+        (input)="onSearchByPlaceName(searchByPlaceName.value)" spellcheck="false">
+    </div>
+    <div class="d-flex self-align">
+      <input class="input_search" type="text" placeholder="Search By Place Rating.." #searchByPlaceRating
+        (input)="onSearchByPlaceRating(searchByPlaceRating.value)" spellcheck="false">
+    </div>
+  </div>
+  <div class="d-flex flex-row gap_2 flex-wrap justify-content-around">
+    <div *ngFor="let place of filteredPlaces" class="cards d-flex flex-column">
+      <div (click)="placeHandler($event, place.placeID)">
+        <i *ngIf="userRole==='admin'" id="delete-place-{{place?.placeID}}"
+          class="fa fa-trash fa-2x btn btn-danger trash_icon" (click)="deletePlace(place.placeID)"></i>
+        <p class="bottom_border_white">
+          <img class="images" [src]="sanitizeImageUrl(place.placeImg)" width="426px" height="276.68px" />
+        </p>
+        <div class="d-flex flex-column justify-content-between p_10">
+          <div class="d-flex flex-row gap_2 justify-content-between align-items-center">
+            <h4 style="color: rgb(0, 0, 0);">{{ place.placeName }}</h4>
+            <div class="d-flex flex-column hours_text">
+              <p class="contact">{{ place.contact }}</p>
+              <p style="color: rgb(95, 95, 95); font-weight: 600;" class="d-flex justify-content-center hours_text">{{
+                place.openingHour }} - {{ place.closingHour }}</p>
+            </div>
+            <p style="color: rgb(0, 0, 0); font-weight: 600;" class="d-flex flex-row gap_1 align-items-center"><i
+                class="fa fa-star" style="color: rgb(0, 0, 0);"></i>{{ place.placeRating }}</p>
+          </div>
+          <div class="d-flex flex-column right_border_white">
+            <p class="description" style="color: black;">{{ place.placeDesc }}</p>
+            <div class="d-flex flex-column gap_1">
+              <button class="btn btn-dark">GPS Button</button>
+              <button class="btn btn-success" [routerLink]="['bookPlace']">Book Now!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
