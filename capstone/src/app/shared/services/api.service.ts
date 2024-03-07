@@ -5,6 +5,8 @@ import { City } from '../models/City';
 import { Places } from '../models/Places';
 import { User } from '../models/User';
 import { Bookings } from '../models/Bookings';
+import { Reviews } from '../models/Reviews';
+import { CityReview } from '../models/CityReview';
 
 @Injectable({
   providedIn: 'root',
@@ -26,9 +28,40 @@ export class ApiService {
     this.cityID.next(placeID);
   }
 
-  //get all cities
+  //-----------------------------------------------------CITIES API CALLS
+
   getCities(): Observable<City[]> {
     return this.http.get<City[]>('https://localhost:7236/getCities');
+  }
+
+  //get one city by cityID
+  getCityByID(cityID: number): Observable<City> {
+    return this.http.get<City>(
+      `https://localhost:7236/getCityByID?id=${cityID}`
+    );
+  }
+
+  addCity(inputData: City): Observable<string> {
+    const authToken = sessionStorage.getItem('authToken');
+
+    return this.http.post<string>('https://localhost:7236/addCity', inputData, {
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+  }
+
+  editCity(inputData: City): Observable<string> {
+    const authToken = sessionStorage.getItem('authToken');
+
+    return this.http.put<'City Edited!'>(
+      'https://localhost:7236/editCity',
+      inputData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
   }
 
   deleteCityByID(cityID: number): Observable<string> {
@@ -38,6 +71,49 @@ export class ApiService {
       `https://localhost:7236/deleteCity?id=${cityID}`,
       {
         headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+  }
+
+  //-----------------------------------------------------PLACES API CALLS
+
+  //get all places by a single cityID
+  getPlacesByID(cityID: number): Observable<Places[]> {
+    return this.http.get<Places[]>(
+      `https://localhost:7236/getPlacesByID?id=${cityID}`
+    );
+  }
+
+  //get one place by placeID
+  getPlaceByID(placeID: number): Observable<Places> {
+    return this.http.get<Places>(
+      `https://localhost:7236/getPlaceByID?id=${placeID}`
+    );
+  }
+
+  addPlace(inputData: Places): Observable<object> {
+    const authToken = sessionStorage.getItem('authToken');
+
+    return this.http.post<object>(
+      'https://localhost:7236/addPlace',
+      inputData,
+      {
+        headers: { Authorization: `Bearer ${authToken}` },
+      }
+    );
+  }
+
+  editPlace(inputData: Places): Observable<string> {
+    const authToken = sessionStorage.getItem('authToken');
+
+    return this.http.put<'Place Edited!'>(
+      'https://localhost:7236/editPlace',
+      inputData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${authToken}`,
         },
       }
@@ -57,52 +133,49 @@ export class ApiService {
     );
   }
 
-  addCity(inputData: City): Observable<string> {
-    const authToken = sessionStorage.getItem('authToken');
+  //-----------------------------------------------------REVIEWS API CALLS
 
-    return this.http.post<string>('https://localhost:7236/addCity', inputData, {
-      headers: { Authorization: `Bearer ${authToken}` },
-    });
+  getReviewsByID(placeID: number): Observable<Reviews[]> {
+    return this.http.get<Reviews[]>(
+      `https://localhost:7236/getReviewByID?placeID=${placeID}`
+    );
   }
 
-  addPlace(inputData: Places): Observable<object> {
-    const authToken = sessionStorage.getItem('authToken');
+  getCityReviewsByID(cityID: number): Observable<CityReview[]> {
+    return this.http.get<CityReview[]>(
+      `https://localhost:7236/getCityReviewByID?cityID=${cityID}`
+    );
+  }
 
-    return this.http.post<object>(
-      'https://localhost:7236/addPlace',
+  addReview(inputData: Reviews): Observable<string> {
+    return this.http.post<string>(
+      'https://localhost:7236/addReview',
       inputData,
-      {
-        headers: { Authorization: `Bearer ${authToken}` },
-      }
+      { headers: { 'Content-Type': 'application/json' } }
     );
   }
 
-  //get all places by a single cityID
-  getPlacesByID(cityID: number): Observable<Places[]> {
-    return this.http.get<Places[]>(
-      `https://localhost:7236/getPlacesByID?id=${cityID}`
+  addCityReview(inputData: CityReview): Observable<object> {
+    return this.http.post<object>(
+      'https://localhost:7236/addCityReview',
+      inputData,
+      { headers: { 'Content-Type': 'application/json' } }
     );
   }
 
-  //get one place by placeID
-  getPlaceByID(placeID: number): Observable<Places> {
-    return this.http.get<Places>(
-      `https://localhost:7236/getPlaceByID?id=${placeID}`
-    );
-  }
-
-  //get one city by cityID
-  getCityByID(cityID: number): Observable<City> {
-    return this.http.get<City>(`https://localhost:7236/getCityByID?id=${cityID}`);
-  }
+  //-----------------------------------------------------BOOKINGS API CALLS
 
   bookPlace(book: Bookings): Observable<string> {
     return this.http.post<string>('https://localhost:7236/bookPlace', book);
   }
 
   getBookings(emailID: string): Observable<Bookings[]> {
-    return this.http.get<Bookings[]>(`https://localhost:7236/getBookings?email=${emailID}`);
+    return this.http.get<Bookings[]>(
+      `https://localhost:7236/getBookings?email=${emailID}`
+    );
   }
+
+  //-----------------------------------------------------USERS API CALLS
 
   registerUser(inputData: User): Observable<object> {
     return this.http.post<object>(
@@ -115,6 +188,14 @@ export class ApiService {
   loginUser(inputData: User): Observable<object> {
     return this.http.post<object>('https://localhost:7236/login', inputData, {
       headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  getUsers(): Observable<User[]> {
+    const authToken = sessionStorage.getItem('authToken');
+
+    return this.http.get<User[]>('https://localhost:7236/getUsers', {
+      headers: { Authorization: `Bearer ${authToken}` },
     });
   }
 
@@ -131,4 +212,32 @@ export class ApiService {
       { headers: { 'Content-Type': 'application/json' } }
     );
   }
+
+  editUserByEmail(inputData: User): Observable<string> {
+    const authToken = sessionStorage.getItem('authToken');
+
+    return this.http.put<'User Details Updated!'>(
+      'https://localhost:7236/updateUserByEmail',
+      inputData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+  }
+
+  deleteUserByEmail(emailID: string): Observable<void> {
+    const authToken = sessionStorage.getItem('authToken');
+
+    return this.http.delete<void>(
+      `https://localhost:7236/deleteUserByEmail?emailID=${emailID}`,
+      {
+        headers: { Authorization: `Bearer ${authToken}` },
+      }
+    );
+  }
+
+  //-----------------------------------------------------
 }

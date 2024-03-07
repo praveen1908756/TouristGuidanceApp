@@ -89,4 +89,8 @@ export class CitiesComponent implements OnInit {
       this.sendCityID(id);
     }
   }
+
+  editCity(cityID: number): void{
+    this.router.navigateByUrl(`attractions/editCity/${cityID}`);
+  }
 }

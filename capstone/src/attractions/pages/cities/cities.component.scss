@@ -1,5 +1,9 @@
 @import "../../../app/shared/shared-styles/shared-styles.scss";
 
+.pr_10{
+  padding-right: 10px;
+}
+
 .main_container {
   background-color: #faedf8;
   height: 100vh;
@@ -32,10 +36,6 @@
   overflow-y: scroll;
 }
 
-.description::-webkit-scrollbar {
-  display: none;
-}
-
 .cards_scroll {
   overflow-x: scroll;
 }
@@ -47,10 +47,6 @@
 .flex-wrap{
   overflow-y: scroll;
   max-height: 80vh;
-}
-
-.flex-wrap::-webkit-scrollbar {
-  display: none;
 }
 
 .btn-success{
@@ -72,4 +68,12 @@
 
 .btn-primary{
   background-color: #014286;
+}
+
+.edit_icon{
+  position: absolute;
+  width: 50px;
+  color: white;
+  left: 10px;
+  top: 10px;
 }

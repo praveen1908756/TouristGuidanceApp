@@ -9,4 +9,6 @@ export class Bookings{
   closingHour: string
   startMonthToVisit: string
   endMonthToVisit: string
+  cityID: number
+  placeID: number
 }

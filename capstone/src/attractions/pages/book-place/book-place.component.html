@@ -1,18 +1,18 @@
-<div class="d-flex main_container">
-  <div class="d-flex flex-column justify-content-between">
+<div class="d-flex main_container align-items-center justify-content-center">
+  <div class="card d-flex flex-column">
     <div class="d-flex flex-row gap_3">
-      <img class="image" [src]="sanitizeImageUrl(bookPlace.placeImg)">
+      <img class="image" [src]="sanitizeImageUrl(bookPlace.placeImg)" height="350px">
       <div class="d-flex flex-column gap_2">
         <div class="d-flex justify-content-between">
           <p></p>
           <h1 class="p_10 mb-0">{{ bookPlace.placeName }}</h1>
           <p></p>
         </div>
-        <p class="description">{{ bookPlace.placeDesc }}</p>
+        <p class="description scrollbar" id="style-3">{{ bookPlace.placeDesc }}</p>
       </div>
     </div>
-    <div class="d-flex flex-column gap_2">
-      <div class="d-flex justify-content-between p_20">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex justify-content-around pt_20 gap_2">
         <div class="timings d-flex flex-row gap_1">
           <p class="timingsLabel">Timings:</p>
           <p>{{ bookPlace.openingHour }} - {{ bookPlace.closingHour }}</p>
@@ -23,16 +23,27 @@
         </div>
         <p class="d-flex flex-row gap_1 align-items-center rating"><i class="fa fa-star"></i>{{ bookPlace.placeRating }}
         </p>
+        <div class="d-flex flex-row justify-content-center timings gap_1">
+          <i class="fa fa-phone-square pt_8"></i>
+          <p class="timingsLabel">Contact: </p>
+          <p>{{ bookPlace.contact }}</p>
+        </div>
       </div>
-      <div class="d-flex flex-row justify-content-center timings gap_1">
-        <i class="fa fa-phone-square pt_8"></i>
-        <p class="timingsLabel">Contact: </p>
-        <p>{{ bookPlace.contact }}</p>
+      <h5 class="pb_5">Reviews:</h5>
+      <div class="d-flex flex-row justify-content-around">
+        <i (click)="addReview()"
+          class="fa fa-plus-square fa-2x btn btn-success edit_icon d-flex justify-content-center align-items-center"></i>
+        <div *ngIf="reviews.length > 0" class="reviews_container d-flex flex-column gap_1 scrollbar" id="style-3">
+          <div class="reviewText d-flex flex-row gap_1 p_10" *ngFor="let review of reviews">
+            <p class="userName">{{ review.userName }}</p>
+            <p class="scrollbar" id="style-3">{{ review.review }}</p>
+          </div>
+        </div>
+        <div></div>
       </div>
-    </div>
-    <div></div>
-    <div class="d-flex justify-content-center p_20">
-      <div #paymentRef class="paypalButton"></div>
+      <div class="d-flex justify-content-center p_20">
+        <div #paymentRef></div>
+      </div>
     </div>
   </div>
 </div>

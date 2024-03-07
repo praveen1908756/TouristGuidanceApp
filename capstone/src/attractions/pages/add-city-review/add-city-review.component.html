@@ -1,0 +1,7 @@
+<form [formGroup]="reviewForm" (submit)="addReview(reviewForm)">
+  <div class="d-flex flex-column gap_3 align-items-center justify-content-center auth_form">
+    <textarea class="input_search" type="text" formControlName="review" placeholder="Add Review..."></textarea>
+    <span *ngIf="isMessageVisible" [style.color]="message==='Review Added!' ? 'green' : 'red'">{{ message }}</span>
+    <button type="submit" class="btn btn-primary" style="width: 30%;">Add Review!</button>
+  </div>
+</form>

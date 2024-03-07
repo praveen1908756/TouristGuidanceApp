@@ -1,5 +1,9 @@
 @import "../cities/cities.component.scss";
 
+.cards_container{
+  height: 75vh;
+}
+
 .cards {
   position: relative;
   color: rgb(255, 255, 255);
@@ -19,9 +23,27 @@
 
 .hours_text > p:first-child {
   margin: 0;
+  letter-spacing: 2px;
 }
 
 .contact{
   font-weight: 600;
   color: rgb(4, 75, 4);
+}
+
+.edit_icon{
+  position: absolute;
+  width: 50px;
+  color: white;
+  left: 10px;
+  top: 10px;
+}
+
+.pr_10{
+  padding-right: 10px;
+}
+
+.button{
+  width: 90%;
+  right: 50px;
 }

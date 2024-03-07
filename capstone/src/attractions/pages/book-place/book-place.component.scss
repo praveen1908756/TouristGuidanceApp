@@ -1,15 +1,15 @@
 @import "../../../app/shared/shared-styles/shared-styles.scss";
 
 .main_container {
-  margin: 0 auto;
-  float: none;
-  margin-top: 84px;
-  margin-bottom: 10px;
-  background-color: aliceblue;
-  width: 70%;
-  height: 75%;
+  height: 100vh;
+}
+
+.card{
   border-radius: 20px;
+  background-color: aliceblue;
   box-shadow: 5px 5px 10px rgb(130, 154, 175);
+  height: 90%;
+  width: 90%;
 }
 
 .image {
@@ -23,15 +23,8 @@
 
 .description {
   height: 250px;
-  overflow-y: scroll;
   padding-right: 40px;
   text-align: justify;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.description::-webkit-scrollbar {
-  display: none;
 }
 
 .rating {
@@ -54,7 +47,30 @@
   width: 60%;
 }
 
-.paypalButton{
-  width: 60%;
-  // height: 20px;
+.reviews{
+  width: 100%;
+}
+
+.reviews_container{
+  padding: 10px;
+  width: 80%;
+  height: 23vh;
+}
+
+.userName{
+  font-weight: 700;
+}
+
+.edit_icon{
+  height: 50px;
+  width: 50px;
+  color: white;
+}
+
+.reviewText{
+  background-color: rgb(250, 250, 194);
+  box-shadow: 2px 2px 5px rgb(201, 201, 25);
+  padding-top: 10px;
+  height: 80px;
+  border-radius: 5px;
 }

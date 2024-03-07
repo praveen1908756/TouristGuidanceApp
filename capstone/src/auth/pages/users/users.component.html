@@ -1,0 +1,18 @@
+<div class="main_container d-flex flex-column gap_2">
+  <p class="noText d-flex justify-content-center align-items-center" *ngIf="users.length===0">No Users Registered!
+  </p>
+  <p class="text d-flex justify-content-center" *ngIf="users.length > 0">Users</p>
+  <div class="user_container d-flex flex-row gap_2 justify-content-center scrollbar" id="style-3">
+    <div class="userCard d-flex flex-column" *ngFor="let user of users">
+      <i *ngIf="user.userRole!=='admin'" (click)="editUser(user.userEmail)"
+          class="fa fa-pencil btn btn-success edit_icon d-flex justify-content-center"></i>
+      <h4>{{ user.userName }}</h4>
+      <h5 *ngIf="user.userRole==='admin'" class="adminText">{{ user.userRole }}</h5>
+      <h5 *ngIf="user.userRole==='user'" class="userText">{{ user.userRole }}</h5>
+      <p>{{ user.userEmail }}</p>
+      <p><b class="userNameText">UserName:</b> {{ user.userName }}</p>
+      <button class="btn btn-danger" (click)="deleteUser(user.userEmail)" [disabled]="user.userRole==='admin'">Delete
+        User</button>
+    </div>
+  </div>
+</div>

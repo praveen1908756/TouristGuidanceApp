@@ -1,0 +1,59 @@
+@import '../../../app/shared/shared-styles/shared-styles.scss';
+
+.main_container{
+  height: 100vh;
+}
+
+.userText{
+  color: green;
+}
+
+.adminText{
+  color: red;
+}
+
+.userNameText{
+  color: orange;
+}
+
+.user_container{
+  overflow-y: scroll;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.text{
+  height: 7vh;
+  font-weight: 500;
+  font-size: 40px;
+  margin-bottom: 0;
+}
+
+.noText{
+  height: 100vh;
+  padding: 20px;
+  font-weight: 500;
+  font-size: 40px;
+}
+
+.userCard{
+  position: relative;
+  padding: 15px;
+  width: 20vw;
+  height: 25vh;
+  border-radius: 10px;
+  background-color: rgb(248, 229, 194);
+  box-shadow: 2px 2px 3px rgb(253, 213, 137);
+}
+
+.btn-danger{
+  color: white;
+}
+
+.edit_icon{
+  position: absolute;
+  width: 30px;
+  color: white;
+  left: 260px;
+  top: 10px;
+}

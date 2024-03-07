@@ -61,6 +61,8 @@ export class ConfirmComponent implements OnInit {
           closingHour: this.place.closingHour,
           startMonthToVisit: this.city.startMonthToVisit,
           endMonthToVisit: this.city.endMonthToVisit,
+          cityID: this.cityID,
+          placeID: this.place.placeID,
         };
 
         this.api.bookPlace(this.bookingData).subscribe({

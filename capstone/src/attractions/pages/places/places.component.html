@@ -16,9 +16,11 @@
         (input)="onSearchByPlaceRating(searchByPlaceRating.value)" spellcheck="false">
     </div>
   </div>
-  <div class="d-flex flex-row gap_2 flex-wrap justify-content-around">
+  <div class="d-flex flex-row gap_2 flex-wrap justify-content-around scrollbar" id="style-3">
     <div *ngFor="let place of filteredPlaces" class="cards d-flex flex-column">
       <div (click)="placeHandler($event, place.placeID)">
+        <i *ngIf="userRole==='admin'" (click)="editPlace(place.placeID)" id="edit-place={{place.placeID}}"
+          class="fa fa-pencil fa-2x btn btn-success edit_icon d-flex justify-content-center"></i>
         <i *ngIf="userRole==='admin'" id="delete-place-{{place?.placeID}}"
           class="fa fa-trash fa-2x btn btn-danger trash_icon" (click)="deletePlace(place.placeID)"></i>
         <p class="bottom_border_white">
@@ -36,10 +38,10 @@
                 class="fa fa-star" style="color: rgb(0, 0, 0);"></i>{{ place.placeRating }}</p>
           </div>
           <div class="d-flex flex-column right_border_white">
-            <p class="description" style="color: black;">{{ place.placeDesc }}</p>
+            <p class="description scrollbar pr_10" id="style-3" style="color: black;">{{ place.placeDesc }}</p>
             <div class="d-flex flex-column gap_1">
               <button class="btn btn-dark">GPS Button</button>
-              <button class="btn btn-success" [routerLink]="['bookPlace']">Book Now!</button>
+              <button class="btn btn-success">Book Now!</button>
             </div>
           </div>
         </div>

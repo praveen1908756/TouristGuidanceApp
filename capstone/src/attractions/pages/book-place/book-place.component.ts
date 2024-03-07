@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Places } from 'src/app/shared/models/Places';
+import { Reviews } from 'src/app/shared/models/Reviews';
+import { User } from 'src/app/shared/models/User';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { PaymentService } from 'src/app/shared/services/payment.service';
 
@@ -15,6 +17,8 @@ export class BookPlaceComponent implements OnInit {
   placeID: number;
   amount = 1000;
   cityID: number;
+  reviews: Reviews[];
+  userEmail: string;
 
   @ViewChild('paymentRef', { static: true }) paymentRef: ElementRef;
 
@@ -27,12 +31,26 @@ export class BookPlaceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userEmail = sessionStorage.getItem('email');
+
     this.ar.paramMap.subscribe((map) => {
       this.placeID = +map?.get('placeID');
     });
 
     this.ar.paramMap.subscribe((map) => {
       this.cityID = +map?.get('cityID');
+    });
+
+    this.api.getReviewsByID(this.placeID).subscribe({
+      next: (res: Reviews[]) => {
+        this.reviews = res;
+      },
+      error: (err: Error) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
     });
 
     this.api.getPlaceByID(this.placeID).subscribe({
@@ -84,6 +102,22 @@ export class BookPlaceComponent implements OnInit {
         },
       })
       .render(this.paymentRef.nativeElement);
+  }
+
+  addReview(): void {
+    this.api.getUserDetails(this.userEmail).subscribe({
+      next: (res: User) => {
+        sessionStorage.setItem('userName', res.userName);
+      },
+      error: (err: Error) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
+
+    this.router.navigate([`attractions/places/${this.cityID}/${this.placeID}/addReview`]);
   }
 
   sanitizeImageUrl(url: string): SafeUrl {

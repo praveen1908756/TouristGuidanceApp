@@ -5,6 +5,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthComponent } from './auth.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UsersComponent } from './pages/users/users.component';
+import { AdminGuard } from 'src/app/shared/models/AdminGuard';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,16 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        canActivate: [AdminGuard]
+      },
+      {
+        path: 'users/:emailID',
+        component: EditUserComponent,
+        canActivate: [AdminGuard]
       }
     ],
   }  

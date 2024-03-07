@@ -1,7 +1,9 @@
 <div class="main_container d-flex flex-column gap_4">
+  <h1 class="noText d-flex justify-content-center align-items-center" *ngIf="authToken===''">Login/SignUp To Continue</h1>
+  <h1 class="noText d-flex justify-content-center align-items-center" *ngIf="bookings.length===0 && restaurants.length===0 && accommodations.length===0 && authToken!==''">You Have No Bookings/Reservations!</h1>
   <div class="attractions d-flex flex-column align-items-center height_max gap_1" *ngIf="bookings.length > 0">
     <h1>Tourist Attractions</h1>
-    <div class="d-flex flex-row gap_1 bookings" *ngFor="let book of bookings">
+    <div class="d-flex flex-row gap_1 bookings" *ngFor="let book of bookings" (click)="goToPlace(book.cityID, book.placeID)">
       <img [src]="sanitizeImageUrl(book.placeImg)" class="image">
       <div class="d-flex flex-column justify-content-center placeName">
         <p class="d-flex align-items-center">{{ book.cityName }}</p>

@@ -1,5 +1,11 @@
 @import '../../../app/shared/shared-styles/shared-styles.scss';
 
+.noText{
+  padding: 15px;
+  height: 100vh;
+  margin-bottom: 0;
+}
+
 .height_max{
   padding: 20px;
   height: 100vh;
@@ -14,6 +20,7 @@
 }
 
 .bookings{
+  cursor: pointer;
   background-color: aliceblue;
   width: 80%;
   height: 15%;

@@ -93,11 +93,12 @@ export class PlacesComponent implements OnInit {
     this.api.transferPlaceID(placeID);
     this.cityID = parseInt(sessionStorage.getItem('cityID'));
     console.log(this.cityID);
-    
+
     console.log(placeID);
-    
-    
-    this.router.navigateByUrl(`attractions/places/${this.cityID}/${placeID}`);
+
+    this.router.navigateByUrl(
+      `attractions/places/${this.cityID}/${placeID}/bookPlace`
+    );
   }
 
   placeHandler(event: any, id: number): void {
@@ -106,5 +107,11 @@ export class PlacesComponent implements OnInit {
     } else {
       this.sendCityID(id);
     }
+  }
+
+  editPlace(placeID: number): void {
+    this.router.navigate([
+      `attractions/places/${this.cityID}/${placeID}/editPlace`,
+    ]);
   }
 }

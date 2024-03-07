@@ -8,6 +8,12 @@ import { BookPlaceComponent } from './pages/book-place/book-place.component';
 import { AddPlaceComponent } from './pages/add-place/add-place.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
 import { AuthGuard } from 'src/app/shared/models/AuthGuard';
+import { CityDetailedComponent } from './pages/city-detailed/city-detailed.component';
+import { EditCityComponent } from './pages/edit-city/edit-city.component';
+import { AdminGuard } from 'src/app/shared/models/AdminGuard';
+import { EditPlaceComponent } from './pages/edit-place/edit-place.component';
+import { AddReviewComponent } from './pages/add-review/add-review.component';
+import { AddCityReviewComponent } from './pages/add-city-review/add-city-review.component';
 
 const routes: Routes = [
   {
@@ -20,10 +26,6 @@ const routes: Routes = [
         component: PlacesComponent,
       },
       {
-        path: 'places/bookPlace',
-        component: BookPlaceComponent,
-      },
-      {
         path: 'addCity',
         component: AddCityComponent,
       },
@@ -32,13 +34,35 @@ const routes: Routes = [
         component: AddPlaceComponent,
       },
       {
-        path: 'places/:cityID/:placeID',
-        component: BookPlaceComponent,
+        path: 'places/:cityID/:placeID/bookPlace',
+        component: BookPlaceComponent
       },
       {
         path: 'places/:cityID/:placeID/confirm',
         component: ConfirmComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'city/:cityID',
+        component: CityDetailedComponent
+      },
+      {
+        path: 'editCity/:cityID',
+        component: EditCityComponent,
+        canActivate: [AdminGuard]
+      },
+      {
+        path: 'places/:cityID/:placeID/editPlace',
+        component: EditPlaceComponent,
+        canActivate: [AdminGuard]
+      },
+      {
+        path: 'places/:cityID/:placeID/addReview',
+        component: AddReviewComponent
+      },
+      {
+        path: 'city/:cityID/addReview',
+        component: AddCityReviewComponent
       }
     ],
   },

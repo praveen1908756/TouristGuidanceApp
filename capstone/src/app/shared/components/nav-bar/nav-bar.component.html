@@ -1,4 +1,4 @@
-<div class="nav_bar poppins_bold d-flex">
+<div class="main_container nav_bar poppins_bold d-flex">
   <div class="d-flex flex-column justify-content-between width_100">
     <div class="d-flex flex-column gap_2">
       <div class="d-flex flex-column gap_1">
@@ -12,40 +12,39 @@
           </div>
         </div>
         <div class="d-flex flex-column align-items-center">
-          <select class="input_search1" id="translate" (change)="changeLang()">
-            <option value="">Select a Language..</option>
+          <select class="input_search1" id="langselect" (change)="translate($event)">
             <option value="en">English</option>
-            <option value="ru">Hindi</option>
-            <option value="admin">Tamil</option>
-            <option value="admin">Kannada</option>
-            <option value="user">Russian</option>
+            <option value="hi">Hindi</option>
+            <option value="ta">Tamil</option>
+            <option value="kn">Kannada</option>
+            <option value="ru">Russian</option>
+            <option value="ja">Japanese</option>
           </select>
         </div>
       </div>
       <div class="d-flex flex-column align-items-center justify-content-center gap_2">
-        <button class="btn btn-primary" routerLink="/auth/login" *ngIf="authToken===''">Login</button>
-        <button class="btn btn-primary" routerLink="/auth/register" *ngIf="authToken===''">Register</button>
+        <button class="btn btn-primary" routerLink="/auth/login" *ngIf="!authToken">Login</button>
+        <button class="btn btn-primary" routerLink="/auth/register" *ngIf="!authToken">Register</button>
       </div>
       <div class="d-flex flex-column gap_1 p_5">
-        <p class="effect effect-1 options" routerLink="/auth/dashboard">Home</p>
-        <p class="effect effect-1 options" routerLink="/attractions">Tourist Attractions</p>
-        <p class="effect effect-1 options">Restaurants</p>
-        <p class="effect effect-1 options">Accommodations</p>
+        <p class="effect effect-1 options" routerLink="/auth/dashboard" id="op1">{{ texts.t1 }}</p>
+        <p class="effect effect-1 options" routerLink="/attractions" id="op2">{{ texts.t2 }}</p>
+        <p class="effect effect-1 options" id="op3">{{ texts.t3 }}</p>
+        <p class="effect effect-1 options" id="op4">{{ texts.t4 }}</p>
       </div>
     </div>
     <div class="d-flex flex-row justify-content-center align-items-start">
       <div class="d-flex flex-column justify-content-between gap_2">
         <div class="d-flex flex-column justify-content-center align-items-center gap_1">
-          <button class="btn btn-success" *ngIf="authToken!==''"
-            routerLink="/auth/profile">Update Profile</button>
-          <button class="btn btn-danger" *ngIf="authToken!==''"
-            (click)="logoutUser()">Logout</button>
+          <button class="btn btn-warning" *ngIf="emailID" routerLink="/auth/users">{{ texts.t5 }}</button>
+          <button class="btn btn-success" *ngIf="emailID" routerLink="/auth/profile">{{ texts.t6 }}</button>
+          <button class="btn btn-danger" *ngIf="emailID" (click)="logoutUser()">{{ texts.t7 }}</button>
         </div>
         <div class="d-flex flex-row">
           <img src="../../../../assets/images/abstract-icon.png" width="60px" height="60px" />
           <div class="d-flex flex-column">
-            <h4>Tourist</h4>
-            <h4>Guidance App</h4>
+            <h4>{{ texts.t8 }}</h4>
+            <h4>{{ texts.t9 }}</h4>
           </div>
         </div>
       </div>
